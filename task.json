@@ -1,9 +1,26 @@
 [
-    "Hit the gym",
-    "Pay bills",
-    "Meet George",
-    "Buy eggs",
-    "Read a book",
-    "Organize office"
+    {
+        "name": "Hit the gym",
+        "done": false
+    },
+    {
+        "name": "Pay bills",
+        "done": false
+    },
+    {
+        "name": "Meet George",
+        "done": false
+    },
+    {
+        "name": "Buy eggs",
+        "done": false
+    },
+    {
+        "name": "Read a book",
+        "done": false
+    },
+    {
+        "name": "Organize office",
+        "done": false
+    }
 ]
-

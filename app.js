@@ -25,8 +25,13 @@ createApp({
                 }).catch(error => {
                     console.error(error.message)
                 })
-            
-            newTask = '';
+        },
+        toggleCompleted(task) {
+            if (task.done === true) {
+                task.done = false
+            } else {
+                task.done = true
+            }
         }
     },
     mounted() {
