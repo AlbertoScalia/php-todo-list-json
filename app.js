@@ -12,8 +12,10 @@ createApp({
     methods: {
         addTask() {
             const data = {
-                newTask: this.newTask
+                newTask: this.newTask,
+                done: false
             }
+
             axios.post(
                 this.apiPost,
                 data,
@@ -32,6 +34,9 @@ createApp({
             } else {
                 task.done = true
             }
+        },
+        deleteTask(task) {
+
         }
     },
     mounted() {
