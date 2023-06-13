@@ -7,7 +7,8 @@ createApp({
             newTask: '',
             apiPost: 'storeTasks.php',
             apiGet: 'getTasks.php',
-            apiDelete: 'deleteTasks.php'
+            apiDelete: 'deleteTasks.php',
+            apiToggleDone: 'toggleDone.php'
         }
     },
     methods: {
@@ -27,12 +28,21 @@ createApp({
                     console.error(error.message)
                 })
         },
-        toggleCompleted(task) {
-            if (task.done === true) {
-                task.done = false
-            } else {
-                task.done = true
+        toggleDone(index) {
+            const data = {
+                index
             }
+            axios.post(
+                this.apiToggleDone,
+                data,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                }).then(response => {
+                    this.tasks = response.data
+                }).catch(error => {
+                    console.error(error.message)
+                })
+
         },
         deleteTask(index) {
 
@@ -40,13 +50,14 @@ createApp({
             const data = {
                 index
             }
-            axios.delete(
+            axios.post(
                 this.apiDelete,
                 data,
                 {
                     headers: { 'Content-Type': 'multipart/form-data' }
-                })
-                .catch(error => {
+                }).then(response => {
+                    this.tasks = response.data
+                }).catch(error => {
                     console.error(error.message)
                 })
         }

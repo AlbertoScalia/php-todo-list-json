@@ -1,12 +1,9 @@
 <?php
 
 
-if(isset($_DELETE["index"])) {
+if(isset($_POST["index"])) {
 
-    $index = intval($_DELETE["index"]);
-
-    $tasksString = file_get_contents('tasks.json');
-
+    $index = intval($_POST["index"]);
     $tasksString = file_get_contents('tasks.json');
     $tasksArray = json_decode($tasksString, true);
 
