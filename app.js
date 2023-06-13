@@ -6,14 +6,14 @@ createApp({
             tasks: null,
             newTask: '',
             apiPost: 'storeTasks.php',
-            apiGet: 'getTasks.php'
+            apiGet: 'getTasks.php',
+            apiDelete: 'deleteTasks.php'
         }
     },
     methods: {
         addTask() {
             const data = {
-                newTask: this.newTask,
-                done: false
+                newTask: this.newTask
             }
 
             axios.post(
@@ -22,7 +22,6 @@ createApp({
                 {
                     headers: { 'Content-Type': 'multipart/form-data' }
                 }).then(response => {
-                    console.log(response)
                     this.tasks = response.data
                 }).catch(error => {
                     console.error(error.message)
@@ -35,8 +34,21 @@ createApp({
                 task.done = true
             }
         },
-        deleteTask(task) {
+        deleteTask(index) {
 
+            event.stopPropagation();
+            const data = {
+                index
+            }
+            axios.delete(
+                this.apiDelete,
+                data,
+                {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                })
+                .catch(error => {
+                    console.error(error.message)
+                })
         }
     },
     mounted() {
